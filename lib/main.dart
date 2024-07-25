@@ -1,8 +1,13 @@
+import 'package:dalel_egypt/core/database/cache/cache_helper.dart';
+import 'package:dalel_egypt/core/services/services_lucator.dart';
 import 'package:dalel_egypt/core/utils/app_colors.dart';
 import 'package:dalel_egypt/fetures/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupServicesLocator();
+  await getIt<MyCacheHelper>().init();
   runApp(const DalelEgypt());
 }
 

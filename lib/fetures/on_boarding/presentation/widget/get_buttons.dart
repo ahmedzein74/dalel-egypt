@@ -6,6 +6,7 @@ import 'package:dalel_egypt/core/widget/custom_button.dart';
 import 'package:dalel_egypt/fetures/auth/presentation/views/sign_in.dart';
 import 'package:dalel_egypt/fetures/auth/presentation/views/sign_up.dart';
 import 'package:dalel_egypt/fetures/on_boarding/data/Models/on_boarding_model.dart';
+import 'package:dalel_egypt/fetures/on_boarding/presentation/function/on_boarding_visited.dart';
 import 'package:flutter/material.dart';
 
 class GetButton extends StatelessWidget {
@@ -20,6 +21,7 @@ class GetButton extends StatelessWidget {
             children: [
               CustomBtn(
                 onpressed: () {
+                  onBoardingVisited();
                   customReplacementNavigation(context, const SignUpView());
                 },
                 text: AppStrings.createAccount,
@@ -30,6 +32,7 @@ class GetButton extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
+                  onBoardingVisited();
                   customReplacementNavigation(context, const SignInView());
                 },
                 child: const Text(
