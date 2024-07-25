@@ -35,6 +35,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
 void delayedNavigation(context) {
   Future.delayed(const Duration(seconds: 3), () {
-    customNavigation(context, OnBoarding());
+    customReplacementNavigation(context, OnBoarding());
   });
 }

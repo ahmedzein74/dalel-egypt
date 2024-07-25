@@ -6,3 +6,10 @@ void customNavigation(BuildContext context, Widget targetScreen) {
     MaterialPageRoute(builder: (context) => targetScreen),
   );
 }
+
+void customReplacementNavigation(BuildContext context, Widget targetScreen) {
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (context) => targetScreen),
+  );
+}

@@ -1,7 +1,7 @@
 import 'package:dalel_egypt/core/utils/app_strings.dart';
 import 'package:dalel_egypt/core/widget/custom_button.dart';
 import 'package:dalel_egypt/fetures/on_boarding/widget/custom_nav_bar.dart';
-import 'package:dalel_egypt/fetures/on_boarding/widget/onBoarding_widget.dart';
+import 'package:dalel_egypt/fetures/on_boarding/widget/onBoarding_body_widget.dart';
 import 'package:flutter/material.dart';
 
 class OnBoarding extends StatelessWidget {
@@ -13,12 +13,15 @@ class OnBoarding extends StatelessWidget {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(children: [
+          child: ListView(physics: const BouncingScrollPhysics(), children: [
             const SizedBox(
               height: 40,
             ),
             const CustomNavBar(),
             OnBoardingWidgetBody(),
+            const SizedBox(
+              height: 129,
+            ),
             CustomBtn(
               onpressed: () {},
               text: AppStrings.next,
