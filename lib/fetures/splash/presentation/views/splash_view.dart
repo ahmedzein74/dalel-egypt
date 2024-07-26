@@ -5,8 +5,7 @@ import 'package:dalel_egypt/core/function/app_functions.dart';
 import 'package:dalel_egypt/core/services/services_lucator.dart';
 import 'package:dalel_egypt/core/utils/app_strings.dart';
 import 'package:dalel_egypt/core/utils/app_textstyle.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/views/sign_in.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/views/sign_up.dart';
+import 'package:dalel_egypt/fetures/auth/presentation/views/sign_up_view.dart';
 import 'package:dalel_egypt/fetures/on_boarding/presentation/views/onBoarding_view.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
     bool isOnBoardingVisited =
         getIt<MyCacheHelper>().getData(key: 'isOnBoardingVisited') ?? false;
     if (isOnBoardingVisited == true) {
-      delayedNavigation(context, SignInView());
+      delayedNavigation(context, const SignUpView());
     } else {
       delayedNavigation(context, OnBoardingView());
     }

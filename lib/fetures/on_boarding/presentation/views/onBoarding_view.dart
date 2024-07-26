@@ -1,13 +1,10 @@
-import 'package:dalel_egypt/core/database/cache/cache_helper.dart';
 import 'package:dalel_egypt/core/function/app_functions.dart';
-import 'package:dalel_egypt/core/services/services_lucator.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/views/sign_up.dart';
+import 'package:dalel_egypt/fetures/auth/presentation/views/sign_up_view.dart';
 import 'package:dalel_egypt/fetures/on_boarding/presentation/function/on_boarding_visited.dart';
 import 'package:dalel_egypt/fetures/on_boarding/presentation/widget/custom_nav_bar.dart';
 import 'package:dalel_egypt/fetures/on_boarding/presentation/widget/get_buttons.dart';
 import 'package:dalel_egypt/fetures/on_boarding/presentation/widget/onBoarding_body_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class OnBoardingView extends StatefulWidget {
   OnBoardingView({super.key});
