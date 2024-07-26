@@ -9,23 +9,24 @@ import 'package:dalel_egypt/fetures/auth/presentation/views/sign_up_view.dart';
 import 'package:dalel_egypt/fetures/on_boarding/presentation/views/onBoarding_view.dart';
 import 'package:flutter/material.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class SplashView extends StatefulWidget {
+  const SplashView({super.key});
+  static String id = 'SplashScreen';
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SplashView> createState() => _SplashViewState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
     bool isOnBoardingVisited =
         getIt<MyCacheHelper>().getData(key: 'isOnBoardingVisited') ?? false;
     if (isOnBoardingVisited == true) {
-      delayedNavigation(context, const SignUpView());
+      delayedNavigation(context, '/signUp');
     } else {
-      delayedNavigation(context, OnBoardingView());
+      delayedNavigation(context, '/onBoarding');
     }
   }
 

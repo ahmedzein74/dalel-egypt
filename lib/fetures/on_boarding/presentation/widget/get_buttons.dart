@@ -22,7 +22,7 @@ class GetButton extends StatelessWidget {
               CustomBtn(
                 onpressed: () {
                   onBoardingVisited();
-                  customReplacementNavigation(context, const SignUpView());
+                  customReplacementNavigation(context, '/signUp');
                 },
                 text: AppStrings.createAccount,
                 color: AppColors.primaryColor,
@@ -33,7 +33,7 @@ class GetButton extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   onBoardingVisited();
-                  customReplacementNavigation(context, const SignInView());
+                  customReplacementNavigation(context, '/login');
                 },
                 child: const Text(
                   AppStrings.loginNow,

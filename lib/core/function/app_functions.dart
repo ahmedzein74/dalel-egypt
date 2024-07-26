@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-void customNavigation(BuildContext context, Widget targetScreen) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => targetScreen),
-  );
+void customNavigation(BuildContext context, String targetScreen) {
+  GoRouter.of(context).pushReplacement(targetScreen);
 }
 
-void customReplacementNavigation(BuildContext context, Widget targetScreen) {
-  Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(builder: (context) => targetScreen),
-  );
+void customReplacementNavigation(BuildContext context, String targetScreen) {
+  GoRouter.of(context).pushReplacement(targetScreen);
 }

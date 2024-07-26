@@ -8,7 +8,7 @@ class TermsAndCondation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [CustomCheckBox(), Text(AppStrings.termsAndCondition)],
+      children: [CustomCheckBox(), const Text(AppStrings.termsAndCondition)],
     );
   }
 }
