@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 
 class HaveAnAccountText extends StatelessWidget {
   const HaveAnAccountText(
-      {super.key, required this.text1, required this.text2});
+      {super.key, required this.text1, required this.text2, this.onTap});
   final String text1, text2;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return Align(
-      child: Text.rich(TextSpan(children: [
-        TextSpan(text: text1),
-        TextSpan(text: text2),
-      ])),
+    return GestureDetector(
+      onTap: onTap,
+      child: Align(
+        child: Text.rich(TextSpan(children: [
+          TextSpan(text: text1),
+          TextSpan(text: text2),
+        ])),
+      ),
     );
   }
 }

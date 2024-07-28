@@ -5,6 +5,7 @@ import 'package:dalel_egypt/core/function/navigation.dart';
 import 'package:dalel_egypt/core/services/services_lucator.dart';
 import 'package:dalel_egypt/core/utils/app_strings.dart';
 import 'package:dalel_egypt/core/utils/app_textstyle.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,9 @@ class _SplashViewState extends State<SplashView> {
     bool isOnBoardingVisited =
         getIt<MyCacheHelper>().getData(key: 'isOnBoardingVisited') ?? false;
     if (isOnBoardingVisited == true) {
-      delayedNavigation(context, '/signUp');
+      FirebaseAuth.instance.currentUser == null
+          ? delayedNavigation(context, '/signUp')
+          : delayedNavigation(context, '/homeView');
     } else {
       delayedNavigation(context, '/onBoarding');
     }

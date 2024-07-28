@@ -1,4 +1,6 @@
+import 'package:dalel_egypt/fetures/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomCheckBox extends StatefulWidget {
   CustomCheckBox({super.key});
@@ -16,6 +18,8 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
         onChanged: (newValue) {
           setState(() {
             value = newValue!;
+            BlocProvider.of<AuthCubit>(context)
+                .termsAndCondationCheckBox(newValue: newValue);
           });
         });
   }

@@ -1,3 +1,4 @@
+import 'package:dalel_egypt/core/function/navigation.dart';
 import 'package:dalel_egypt/core/utils/app_strings.dart';
 import 'package:dalel_egypt/fetures/auth/presentation/widget/custom_sign_up_form.dart';
 import 'package:dalel_egypt/fetures/auth/presentation/widget/have_account_text.dart';
@@ -10,26 +11,29 @@ class SignUpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // sliver=children
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(child: SizedBox(height: 150)),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(child: SizedBox(height: 150)),
+            const SliverToBoxAdapter(
               child: WelcomeTextWidget(text: AppStrings.welcome),
             ),
-            SliverToBoxAdapter(child: SizedBox(height: 40)),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(child: SizedBox(height: 40)),
+            const SliverToBoxAdapter(
               child: CustomSignUpForm(),
             ),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: SizedBox(
                 height: 20,
               ),
             ),
             SliverToBoxAdapter(
               child: HaveAnAccountText(
+                onTap: () {
+                  customReplacementNavigation(context, '/login');
+                },
                 text1: AppStrings.alreadyHaveAnAccount,
                 text2: AppStrings.signIn,
               ),
