@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
-  static String id = 'SplashScreen';
 
   @override
   State<SplashView> createState() => _SplashViewState();
@@ -25,7 +24,7 @@ class _SplashViewState extends State<SplashView> {
         getIt<MyCacheHelper>().getData(key: 'isOnBoardingVisited') ?? false;
     if (isOnBoardingVisited == true) {
       FirebaseAuth.instance.currentUser == null
-          ? delayedNavigation(context, '/signUp')
+          ? delayedNavigation(context, '/signIn')
           : delayedNavigation(context, '/homeView');
     } else {
       delayedNavigation(context, '/onBoarding');

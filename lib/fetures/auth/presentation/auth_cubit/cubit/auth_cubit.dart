@@ -1,8 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:dalel_egypt/fetures/auth/presentation/auth_cubit/cubit/auth_state.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/widget/terms_and_condation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
@@ -11,11 +10,12 @@ class AuthCubit extends Cubit<AuthState> {
   String? emailAddress;
   String? password;
   GlobalKey<FormState> signUpFormKey = GlobalKey();
+  GlobalKey<FormState> signinFormKey = GlobalKey();
   bool? termsAndCondationCheckBoxValue = false;
   signUpWithEmailAndPassword() async {
     try {
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      emit(SignUpLoadingState());
+      FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailAddress!,
         password: password!,
       );
@@ -29,7 +29,6 @@ class AuthCubit extends Cubit<AuthState> {
             errMessage: 'The account already exists for that email.'));
       }
     } catch (e) {
-      print(e.toString());
       emit(SignUpFailureState(errMessage: e.toString()));
     }
   }
@@ -37,5 +36,23 @@ class AuthCubit extends Cubit<AuthState> {
   termsAndCondationCheckBox({required newValue}) {
     termsAndCondationCheckBoxValue = newValue;
     emit(TermsAndConditionState());
+  }
+
+  signInWithEmailAndPassword() async {
+    try {
+      emit(SignInLoadingState());
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailAddress!, password: password!);
+      emit(SignInSuccesState());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        emit(SignInFailureState(errMessage: 'No user found for that email.'));
+      } else if (e.code == 'wrong-password') {
+        emit(SignInFailureState(
+            errMessage: 'Wrong password provided for that user.'));
+      }
+    } catch (e) {
+      emit(SignInFailureState(errMessage: e.toString()));
+    }
   }
 }

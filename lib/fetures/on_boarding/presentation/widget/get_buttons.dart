@@ -32,7 +32,7 @@ class GetButton extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   onBoardingVisited();
-                  customReplacementNavigation(context, '/login');
+                  customReplacementNavigation(context, '/signIn');
                 },
                 child: const Text(
                   AppStrings.loginNow,

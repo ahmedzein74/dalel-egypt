@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
-  static String id = 'SignUpView';
   @override
   Widget build(BuildContext context) {
     // sliver=children
@@ -15,6 +14,7 @@ class SignUpView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
           slivers: [
             const SliverToBoxAdapter(child: SizedBox(height: 150)),
             const SliverToBoxAdapter(
@@ -30,9 +30,9 @@ class SignUpView extends StatelessWidget {
               ),
             ),
             SliverToBoxAdapter(
-              child: HaveAnAccountText(
+              child: HaveAccountWidget(
                 onTap: () {
-                  customReplacementNavigation(context, '/login');
+                  customReplacementNavigation(context, '/signIn');
                 },
                 text1: AppStrings.alreadyHaveAnAccount,
                 text2: AppStrings.signIn,

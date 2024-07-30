@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 
 class OnBoardingView extends StatefulWidget {
   OnBoardingView({super.key});
-  static String id = 'OnBoardingView';
 
   @override
   State<OnBoardingView> createState() => _OnBoardingViewState();

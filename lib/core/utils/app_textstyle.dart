@@ -51,4 +51,10 @@ abstract class AppTextStylies {
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
+  static const Saira700Style32 = TextStyle(
+    fontSize: 32,
+    fontFamily: "Saira",
+    fontWeight: FontWeight.w700,
+    color: Color(0xffFFFFFF),
+  );
 }
