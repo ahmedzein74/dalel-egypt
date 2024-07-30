@@ -50,6 +50,8 @@ class AuthCubit extends Cubit<AuthState> {
       } else if (e.code == 'wrong-password') {
         emit(SignInFailureState(
             errMessage: 'Wrong password provided for that user.'));
+      } else {
+        emit(SignInFailureState(errMessage: 'Email or Password are Incorrect'));
       }
     } catch (e) {
       emit(SignInFailureState(errMessage: e.toString()));
