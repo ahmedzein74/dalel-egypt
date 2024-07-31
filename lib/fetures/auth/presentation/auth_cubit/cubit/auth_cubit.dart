@@ -11,14 +11,16 @@ class AuthCubit extends Cubit<AuthState> {
   String? password;
   GlobalKey<FormState> signUpFormKey = GlobalKey();
   GlobalKey<FormState> signinFormKey = GlobalKey();
+  GlobalKey<FormState> forgotPassordFormKey = GlobalKey();
   bool? termsAndCondationCheckBoxValue = false;
   signUpWithEmailAndPassword() async {
     try {
       emit(SignUpLoadingState());
-      FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailAddress!,
         password: password!,
       );
+      verifyEmail();
       emit(SignUpSuccesState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -27,10 +29,18 @@ class AuthCubit extends Cubit<AuthState> {
       } else if (e.code == 'email-already-in-use') {
         emit(SignUpFailureState(
             errMessage: 'The account already exists for that email.'));
+      } else if (e.code == 'invalid-email') {
+        emit(SignUpFailureState(errMessage: 'The email address is invalid .'));
+      } else {
+        emit(SignUpFailureState(errMessage: e.code));
       }
     } catch (e) {
       emit(SignUpFailureState(errMessage: e.toString()));
     }
+  }
+
+  verifyEmail() async {
+    await FirebaseAuth.instance.currentUser!.sendEmailVerification();
   }
 
   termsAndCondationCheckBox({required newValue}) {
@@ -55,6 +65,27 @@ class AuthCubit extends Cubit<AuthState> {
       }
     } catch (e) {
       emit(SignInFailureState(errMessage: e.toString()));
+    }
+  }
+
+  resetPasswordWithLink() async {
+    try {
+      emit(PasswordResetLoadingState());
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress!);
+      emit(PasswordResetSuccessState());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        emit(PasswordResetFailureState(
+            errMessage: 'No user found for that email.'));
+      } else if (e.code == 'invalid-email') {
+        emit(PasswordResetFailureState(
+            errMessage: 'The email address is invalid.'));
+      } else {
+        emit(PasswordResetFailureState(
+            errMessage: e.message ?? 'An error occurred.'));
+      }
+    } catch (e) {
+      emit(PasswordResetFailureState(errMessage: e.toString()));
     }
   }
 }

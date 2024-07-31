@@ -9,7 +9,6 @@ import 'package:dalel_egypt/fetures/auth/presentation/widget/custom_text_form_fi
 import 'package:dalel_egypt/fetures/auth/presentation/widget/terms_and_condation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class CustomSignUpForm extends StatelessWidget {
   const CustomSignUpForm({super.key});
@@ -19,8 +18,8 @@ class CustomSignUpForm extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignUpSuccesState) {
-          showToast('Account Created Successfuly');
-          customReplacementNavigation(context, '/homeView');
+          showToast('Successfuly check your email to verfiy');
+          customReplacementNavigation(context, '/signIn');
         } else if (state is SignUpFailureState) {
           showToast(state.errMessage);
         }

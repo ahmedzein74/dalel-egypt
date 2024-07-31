@@ -1,5 +1,6 @@
 import 'package:dalel_egypt/core/services/services_lucator.dart';
 import 'package:dalel_egypt/fetures/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
+import 'package:dalel_egypt/fetures/auth/presentation/views/forget_password_view.dart';
 import 'package:dalel_egypt/fetures/auth/presentation/views/sign_in_view.dart';
 import 'package:dalel_egypt/fetures/auth/presentation/views/sign_up_view.dart';
 import 'package:dalel_egypt/fetures/home/presentation/views/home_view.dart';
@@ -35,11 +36,13 @@ final GoRouter router = GoRouter(routes: [
     path: '/homeView',
     builder: (context, state) => const HomeView(),
   ),
-  // GoRoute(
-  //   path: '/forgetPassword',
-  //   builder: (context, state) => ForgetPasswordView(
-  //   ),
-  // ),
+  GoRoute(
+    path: '/forgetPassword',
+    builder: (context, state) => BlocProvider(
+      create: (context) => AuthCubit(),
+      child: const ForgetPasswordView(),
+    ),
+  ),
   // GoRoute(
   //   path: '/bottomNavBar',
   //   builder: (context, state) => const HomeNavBar(),
