@@ -44,7 +44,7 @@ class CustomForgetPasswordForm extends StatelessWidget {
                 labelText: AppStrings.emailAddress,
               ),
               const SizedBox(height: 129),
-              state is SignInLoadingState
+              state is PasswordResetLoadingState
                   ? CircularProgressIndicator(
                       color: AppColors.primaryColor,
                     )

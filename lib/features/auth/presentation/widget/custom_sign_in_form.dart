@@ -21,7 +21,7 @@ class CustomSignInForm extends StatelessWidget {
         if (state is SignInSuccesState) {
           showToast('Welcome Back!');
           FirebaseAuth.instance.currentUser!.emailVerified
-              ? customReplacementNavigation(context, '/homeView')
+              ? customReplacementNavigation(context, '/homeNavBar')
               : showToast('Please verfiy your Account');
         } else if (state is SignInFailureState) {
           showToast(state.errMessage);
@@ -70,9 +70,9 @@ class CustomSignInForm extends StatelessWidget {
                       color: AppColors.primaryColor,
                     )
                   : CustomBtn(
-                      onpressed: () {
+                      onpressed: () async {
                         if (authCubit.signinFormKey.currentState!.validate()) {
-                          authCubit.signInWithEmailAndPassword();
+                          await authCubit.signInWithEmailAndPassword();
                         }
                       },
                       text: AppStrings.signIn,

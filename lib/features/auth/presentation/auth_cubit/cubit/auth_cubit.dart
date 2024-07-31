@@ -14,7 +14,8 @@ class AuthCubit extends Cubit<AuthState> {
   GlobalKey<FormState> signinFormKey = GlobalKey();
   GlobalKey<FormState> forgotPassordFormKey = GlobalKey();
   bool? termsAndCondationCheckBoxValue = false;
-  signUpWithEmailAndPassword() async {
+
+  Future<void> signUpWithEmailAndPassword() async {
     try {
       emit(SignUpLoadingState());
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -41,16 +42,16 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  verifyEmail() async {
+  Future<void> verifyEmail() async {
     await FirebaseAuth.instance.currentUser!.sendEmailVerification();
   }
 
-  termsAndCondationCheckBox({required newValue}) {
+  void termsAndCondationCheckBox({required newValue}) {
     termsAndCondationCheckBoxValue = newValue;
     emit(TermsAndConditionState());
   }
 
-  signInWithEmailAndPassword() async {
+  Future<void> signInWithEmailAndPassword() async {
     try {
       emit(SignInLoadingState());
       await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -70,7 +71,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  resetPasswordWithLink() async {
+  Future<void> resetPasswordWithLink() async {
     try {
       emit(PasswordResetLoadingState());
       await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress!);
@@ -91,7 +92,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  addUserProfile() async {
+  Future<void> addUserProfile() async {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     await users.add({
       'frist_name': fristName,
