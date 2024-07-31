@@ -18,7 +18,7 @@ class CustomWelcomBanner extends StatelessWidget {
         children: [
           const Text(
             AppStrings.appName,
-            style: AppTextStylies.saira700Style32,
+            style: AppTextStylies.pacifico700Style42,
           ),
           const SizedBox(
             height: 18,

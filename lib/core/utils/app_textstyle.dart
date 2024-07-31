@@ -45,13 +45,13 @@ abstract class AppTextStylies {
     fontFamily: "Poppins",
     color: Colors.black,
   );
-  static const pacifico700Style32 = TextStyle(
+  static const pacifico700Style42 = TextStyle(
     fontSize: 42,
     fontFamily: "Pacifico",
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
-  static const saira700Style32 = TextStyle(
+  static const pacifico700Style32 = TextStyle(
     fontSize: 32,
     fontFamily: "Pacifico",
     fontWeight: FontWeight.w700,

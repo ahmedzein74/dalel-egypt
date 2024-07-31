@@ -41,20 +41,52 @@ List<Widget> _buildScreens() {
 List<PersistentBottomNavBarItem> _navBarsItems() {
   return [
     PersistentBottomNavBarItem(
-      inactiveIcon: SvgPicture.asset(Assets.assetsImagesHome),
-      icon: SvgPicture.asset(Assets.assetsImagesHomeActive),
+      inactiveIcon: SvgPicture.asset(
+        Assets.assetsImagesHome,
+        height: 25,
+        width: 25,
+      ),
+      icon: SvgPicture.asset(
+        Assets.assetsImagesHomeActive,
+        height: 25,
+        width: 25,
+      ),
     ),
     PersistentBottomNavBarItem(
-      inactiveIcon: SvgPicture.asset(Assets.assetsImagesShoppingCart),
-      icon: SvgPicture.asset(Assets.assetsImagesShoppingCartActive),
+      inactiveIcon: SvgPicture.asset(
+        Assets.assetsImagesShoppingCart,
+        height: 30,
+        width: 30,
+      ),
+      icon: SvgPicture.asset(
+        Assets.assetsImagesShoppingCartActive,
+        height: 30,
+        width: 30,
+      ),
     ),
     PersistentBottomNavBarItem(
-      inactiveIcon: SvgPicture.asset(Assets.assetsImagesSearch),
-      icon: SvgPicture.asset(Assets.assetsImagesSearchActive),
+      inactiveIcon: SvgPicture.asset(
+        Assets.assetsImagesSearch,
+        height: 25,
+        width: 25,
+      ),
+      icon: SvgPicture.asset(
+        Assets.assetsImagesSearchActive,
+        height: 34,
+        width: 34,
+      ),
     ),
     PersistentBottomNavBarItem(
-      inactiveIcon: SvgPicture.asset(Assets.assetsImagesProfile),
-      icon: SvgPicture.asset(Assets.assetsImagesProfileActive),
+      inactiveIcon: SvgPicture.asset(
+        Assets.assetsImagesProfile,
+        height: 35,
+        width: 35,
+      ),
+      icon: SvgPicture.asset(
+        Assets.assetsImagesProfileActive,
+        height: 35,
+        width: 35,
+      ),
     ),
   ];
 }
