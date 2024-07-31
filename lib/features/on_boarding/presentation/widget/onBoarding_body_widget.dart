@@ -1,6 +1,6 @@
 import 'package:dalel_egypt/core/utils/app_textstyle.dart';
-import 'package:dalel_egypt/fetures/on_boarding/data/Models/on_boarding_model.dart';
-import 'package:dalel_egypt/fetures/on_boarding/presentation/widget/custom_smooth_inadicator.dart';
+import 'package:dalel_egypt/features/on_boarding/data/Models/on_boarding_model.dart';
+import 'package:dalel_egypt/features/on_boarding/presentation/widget/custom_smooth_inadicator.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingWidgetBody extends StatelessWidget {

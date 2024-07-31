@@ -4,8 +4,8 @@ import 'package:dalel_egypt/core/utils/app_strings.dart';
 import 'package:dalel_egypt/core/utils/app_textstyle.dart';
 import 'package:dalel_egypt/core/widget/custom_button.dart';
 
-import 'package:dalel_egypt/fetures/on_boarding/data/Models/on_boarding_model.dart';
-import 'package:dalel_egypt/fetures/on_boarding/presentation/function/on_boarding_visited.dart';
+import 'package:dalel_egypt/features/on_boarding/data/Models/on_boarding_model.dart';
+import 'package:dalel_egypt/features/on_boarding/presentation/function/on_boarding_visited.dart';
 import 'package:flutter/material.dart';
 
 class GetButton extends StatelessWidget {

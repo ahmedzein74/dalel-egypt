@@ -1,9 +1,9 @@
 import 'package:dalel_egypt/core/function/navigation.dart';
 import 'package:dalel_egypt/core/utils/app_strings.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/widget/custom_sign_in_form.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/widget/have_account_text.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/widget/welcom_banner.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/widget/welcome_page_text.dart';
+import 'package:dalel_egypt/features/auth/presentation/widget/custom_sign_in_form.dart';
+import 'package:dalel_egypt/features/auth/presentation/widget/have_account_text.dart';
+import 'package:dalel_egypt/features/auth/presentation/widget/welcom_banner.dart';
+import 'package:dalel_egypt/features/auth/presentation/widget/welcome_page_text.dart';
 import 'package:flutter/material.dart';
 
 class SignInView extends StatelessWidget {

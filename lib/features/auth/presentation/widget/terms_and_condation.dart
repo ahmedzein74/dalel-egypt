@@ -1,5 +1,5 @@
 import 'package:dalel_egypt/core/utils/app_strings.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/widget/custom_check_box.dart';
+import 'package:dalel_egypt/features/auth/presentation/widget/custom_check_box.dart';
 import 'package:flutter/material.dart';
 
 class TermsAndCondation extends StatelessWidget {

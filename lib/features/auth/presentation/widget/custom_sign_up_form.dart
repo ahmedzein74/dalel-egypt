@@ -3,36 +3,57 @@ import 'package:dalel_egypt/core/function/show_toast.dart';
 import 'package:dalel_egypt/core/utils/app_colors.dart';
 import 'package:dalel_egypt/core/utils/app_strings.dart';
 import 'package:dalel_egypt/core/widget/custom_button.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/auth_cubit/cubit/auth_state.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/widget/custom_text_form_field.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/widget/forget_password_text.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:dalel_egypt/features/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
+import 'package:dalel_egypt/features/auth/presentation/auth_cubit/cubit/auth_state.dart';
+import 'package:dalel_egypt/features/auth/presentation/widget/custom_text_form_field.dart';
+import 'package:dalel_egypt/features/auth/presentation/widget/terms_and_condation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomSignInForm extends StatelessWidget {
-  const CustomSignInForm({super.key});
+class CustomSignUpForm extends StatelessWidget {
+  const CustomSignUpForm({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is SignInSuccesState) {
-          showToast('Welcome Back!');
-          FirebaseAuth.instance.currentUser!.emailVerified
-              ? customReplacementNavigation(context, '/homeView')
-              : showToast('Please verfiy your Account');
-        } else if (state is SignInFailureState) {
+        if (state is SignUpSuccesState) {
+          showToast('Successfuly check your email to verfiy');
+          customReplacementNavigation(context, '/signIn');
+        } else if (state is SignUpFailureState) {
           showToast(state.errMessage);
         }
       },
       builder: (context, state) {
         AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
         return Form(
-          key: authCubit.signinFormKey,
+          key: authCubit.signUpFormKey,
           child: Column(
             children: [
+              CustomTextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'First name cannot be empty';
+                  }
+                  return null;
+                },
+                onChanged: (fristName) {
+                  authCubit.fristName = fristName;
+                },
+                labelText: AppStrings.fristName,
+              ),
+              CustomTextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Last name cannot be empty';
+                  }
+                  return null;
+                },
+                onChanged: (lastName) {
+                  authCubit.lastName = lastName;
+                },
+                labelText: AppStrings.lastName,
+              ),
               CustomTextFormField(
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -62,20 +83,25 @@ class CustomSignInForm extends StatelessWidget {
                 },
                 labelText: AppStrings.password,
               ),
-              const SizedBox(height: 16),
-              const ForgetPasswoedTextWidget(),
-              const SizedBox(height: 102),
-              state is SignInLoadingState
+              const TermsAndCondation(),
+              const SizedBox(height: 90),
+              state is SignUpLoadingState
                   ? CircularProgressIndicator(
                       color: AppColors.primaryColor,
                     )
                   : CustomBtn(
+                      color: authCubit.termsAndCondationCheckBoxValue == false
+                          ? AppColors.grey
+                          : null,
                       onpressed: () {
-                        if (authCubit.signinFormKey.currentState!.validate()) {
-                          authCubit.signInWithEmailAndPassword();
+                        if (authCubit.termsAndCondationCheckBoxValue == true) {
+                          if (authCubit.signUpFormKey.currentState!
+                              .validate()) {
+                            authCubit.signUpWithEmailAndPassword();
+                          }
                         }
                       },
-                      text: AppStrings.signIn,
+                      text: AppStrings.signUp,
                     ),
             ],
           ),

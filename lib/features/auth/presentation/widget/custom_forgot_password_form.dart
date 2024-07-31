@@ -3,9 +3,9 @@ import 'package:dalel_egypt/core/function/show_toast.dart';
 import 'package:dalel_egypt/core/utils/app_colors.dart';
 import 'package:dalel_egypt/core/utils/app_strings.dart';
 import 'package:dalel_egypt/core/widget/custom_button.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/auth_cubit/cubit/auth_state.dart';
-import 'package:dalel_egypt/fetures/auth/presentation/widget/custom_text_form_field.dart';
+import 'package:dalel_egypt/features/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
+import 'package:dalel_egypt/features/auth/presentation/auth_cubit/cubit/auth_state.dart';
+import 'package:dalel_egypt/features/auth/presentation/widget/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
